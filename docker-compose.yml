@@ -10,6 +10,8 @@ services:
         source: ./app
         target: /usr/src/app
     #"react-app"の部分がプロジェクト名になる
+    # node_moduleが消えた時があって一旦 yarn addをしてnode_modulesを生成した
+    # command: sh -c "cd react-app && yarn add react-scripts && yarn start"
     command: sh -c "cd react-app && yarn start"
     ports:
       - 3000:3000
