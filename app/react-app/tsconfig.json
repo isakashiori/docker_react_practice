@@ -18,9 +18,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "noImplicitAny": false,
   },
   "include": [
     "src"
   ]
 }
+// Cannot find module 'react-redux' or its corresponding type declarations.
+// 上記のエラーが出るので下記の記事を見て、noImplicitAnyの項目を追加
+// https://qiita.com/shiei_kawa/items/227886079be34ccfaa38
