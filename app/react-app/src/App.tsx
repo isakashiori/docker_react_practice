@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useDispatch, useSelector } from "react-redux";
+import { setCount } from "./redux/slice";
+import { countSelector } from "./redux/selector";
 
 function App() {
   // 分割代入で下記の変数を宣言する
   //const [状態変数, 状態を変更するための関数] = useState(状態の初期値)
   const [inputValue, setInputValue] = useState("");
   const [todos, setTodos] = useState<Todo[]>([]);
+
+  const dispatch = useDispatch();
+  const count = useSelector(countSelector);
 
   // 下記で型宣言を行う
   type Todo = {
@@ -56,7 +62,7 @@ function App() {
         </h2>
         <form onSubmit={(e) => {handleSubmit(e)}}>
           <input type="text" onChange={(e) => handleChange(e)} className='inputText' />
-          <input type="submit" value="追加" className='submitButton'/>
+          <input type="submit" value="追加"  onClick={() => dispatch(setCount(1))} className='submitButton'/>
         </form>
         <ul className='todoList'>
           {todos.map((todo) => (
@@ -69,6 +75,7 @@ function App() {
             </li>
           ))}
         </ul>
+        <div>{count}</div>
       </div>
     </div>
   );
